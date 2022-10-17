@@ -19,7 +19,6 @@ const App = () => {
             setTodos(loadedTodos)
         }
     }, [])
-
     useEffect(() => {
         const temp = JSON.stringify(todos)
         window.localStorage.setItem('todos', temp)
@@ -71,7 +70,6 @@ const App = () => {
                        addTodo={addTodo}
                        onChangeHandler={onChangeHandler}
                 />
-
                 <TodoBody todos={todos}
                           removeTask={removeTask}
                           checkedHandler={checkedHandler}
