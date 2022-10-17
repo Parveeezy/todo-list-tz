@@ -5,7 +5,6 @@ import Input from "./Input/Input";
 import TodoBody from "./TodoBody/TodoBody";
 
 const App = () => {
-
     const [todo, setTodo] = useState('')
     const [todos, setTodos] = useState([])
     const [todoEditing, setTodoEditing] = useState(null)
