@@ -1,0 +1,80 @@
+:root {
+    --hoverBgColor: #1d4465;
+    --hoverColor: #8462cc;
+    --hoverBorder: 2px solid #1bc569;
+    --hoverBorderRadius: 5px;
+}
+
+.todoTitle {
+    font-size: 24px;
+    color: #3abeaa;
+}
+
+.editBtn {
+    height: 24px;
+    font-size: 14px;
+    margin-left: 5px;
+    background-color: #2f526e;
+    color: white;
+    outline: none !important;
+    border: 2px solid #3abeaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editBtn:hover {
+    background-color: var(--hoverBgColor);
+    color: var(--hoverColor);
+    border: var(--hoverBorder);
+    border-radius: var(--hoverBorderRadius);
+}
+
+.editInput {
+    width: 150px;
+    height: 20px;
+    outline: none !important;
+    border: 2px solid #3abeaa;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.editInput:hover {
+    border: var(--hoverBorder);
+}
+
+.submitBtn {
+    height: 24px;
+    font-size: 14px;
+    margin-left: 5px;
+    background-color: #2f526e;
+    color: white;
+    outline: none !important;
+    border: 2px solid #3abeaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submitBtn:hover{
+    background-color: var(--hoverBgColor);
+    color: var(--hoverColor);
+    border: var(--hoverBorder);
+    border-radius: var(--hoverBorderRadius);
+}
+
+.removeBtn {
+    height: 24px;
+    font-size: 14px;
+    margin-left: 5px;
+    background-color: #2f526e;
+    color: white;
+    outline: none !important;
+    border: 2px solid #3abeaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.removeBtn:hover {
+    background-color: var(--hoverBgColor);
+    color: var(--hoverColor);
+    border: var(--hoverBorder);
+    border-radius: var(--hoverBorderRadius);
+}

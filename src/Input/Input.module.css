@@ -1,3 +1,9 @@
+:root {
+    --hoverBgColor: #1d4465;
+    --hoverColor: #8462cc;
+    --hoverBorder: 2px solid #1bc569;
+    --hoverBorderRadius: 5px;
+}
 
 .todoTitile {
     display: flex;
@@ -19,6 +25,11 @@
     border-radius: 5px;
     padding-left: 10px;
     font-size: 18px;
+    cursor: pointer;
+}
+
+.input:hover {
+    border: var(--hoverBorder);
 }
 
 .addBtn {
@@ -31,4 +42,11 @@
     outline: none !important;
     border: 2px solid #3abeaa;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.addBtn:hover{
+    background-color: var(--hoverBgColor);
+    color: var(--hoverColor);
+    border: var(--hoverBorder);
 }

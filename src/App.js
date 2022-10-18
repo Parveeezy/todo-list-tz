@@ -9,19 +9,21 @@ const App = () => {
     const [todos, setTodos] = useState([])
     const [todoEditing, setTodoEditing] = useState(null)
     const [editingText, setEditingText] = useState('')
+    const [filter, setFilter] = useState('all');
 
     useEffect(() => {
         const temp = window.localStorage.getItem("todos")
         const loadedTodos = JSON.parse(temp)
-
         if (loadedTodos) {
             setTodos(loadedTodos)
         }
     }, [])
+
     useEffect(() => {
         const temp = JSON.stringify(todos)
         window.localStorage.setItem('todos', temp)
-    }, [todos])
+    }, [todos, setTodos])
+
 
     const newTodo = {
         id: v4(),
@@ -33,7 +35,7 @@ const App = () => {
     const addTodo = (e) => {
         e.preventDefault();
         if (todo !== '') {
-            setTodos([...todos, newTodo])
+            setTodos([newTodo, ...todos])
             setTodo('')
         }
     }
@@ -61,6 +63,20 @@ const App = () => {
             setEditingText('')
         }
     }
+    const changeFilter = (filter) => {
+        setFilter(filter);
+    }
+    const getFilteredTasks = (todos, filter) => {
+        let taskForTodoList = todos;
+        switch (filter) {
+            case "active":
+                taskForTodoList = todos.filter(t => !t.isDone);
+                break
+            case "completed":
+                taskForTodoList = todos.filter(t => t.isDone);
+        }
+        return taskForTodoList;
+    }
 
     return (
         <div className="App">
@@ -69,7 +85,8 @@ const App = () => {
                        addTodo={addTodo}
                        onChangeHandler={onChangeHandler}
                 />
-                <TodoBody todos={todos}
+
+                <TodoBody todos={getFilteredTasks(todos, filter)}
                           removeTask={removeTask}
                           checkedHandler={checkedHandler}
                           todoEditing={todoEditing}
@@ -77,6 +94,7 @@ const App = () => {
                           editingText={editingText}
                           setEditingText={setEditingText}
                           editTodo={editTodo}
+                          changeFilter={changeFilter}
                 />
             </div>
         </div>

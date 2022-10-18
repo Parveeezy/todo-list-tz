@@ -33,6 +33,8 @@ const Todo = (
                         onChange={(e) => setEditingText(e.currentTarget.value)}
                         style={!todo.editing ? textInputOn : textInputOff}
                         value={editingText}
+                        className={s.editInput}
+                        placeholder={'Измените задачу...'}
                 />)
                 :
                 (<span>{todo.task}</span>)}

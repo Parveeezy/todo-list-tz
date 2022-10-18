@@ -1,3 +1,10 @@
+:root {
+    --hoverBgColor: #1d4465;
+    --hoverColor: #8462cc;
+    --hoverBorder: 2px solid #1bc569;
+    --hoverBorderRadius: 5px;
+}
+
 .todoElements {
     display: flex;
     flex-direction: column;
@@ -14,5 +21,29 @@
 
 .notFound {
     font-size: 30px;
-    color: green;
+    color: rgba(0, 128, 0, 0.78);
+}
+
+.filterBtns {
+    margin-left: 190px;
+    margin-bottom: 15px;
+}
+
+.filterBtn {
+    height: 24px;
+    font-size: 14px;
+    margin-left: 5px;
+    background-color: #2f526e;
+    color: white;
+    outline: none !important;
+    border: 2px solid #3abeaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filterBtn:hover {
+    background-color: var(--hoverBgColor);
+    color: var(--hoverColor);
+    border: var(--hoverBorder);
+    border-radius: var(--hoverBorderRadius);
 }
