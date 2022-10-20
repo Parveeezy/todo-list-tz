@@ -5,43 +5,37 @@ import Input from "./Input/Input";
 import TodoBody from "./TodoBody/TodoBody";
 
 const App = () => {
-    const [todo, setTodo] = useState('')
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([]) //Массив данных
     const [todoEditing, setTodoEditing] = useState(null)
     const [editingText, setEditingText] = useState('')
     const [filter, setFilter] = useState('all');
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const temp = window.localStorage.getItem("todos")
         const loadedTodos = JSON.parse(temp)
         if (loadedTodos) {
             setTodos(loadedTodos)
+        } else {
+            setError(true)
+            setTodos(loadedTodos)
         }
     }, [])
-
     useEffect(() => {
         const temp = JSON.stringify(todos)
         window.localStorage.setItem('todos', temp)
     }, [todos, setTodos])
 
-
-    const newTodo = {
-        id: v4(),
-        text: todo,
-        isDone: false,
-        editing: false
-    }
-
-    const addTodo = (e) => {
-        e.preventDefault();
-        if (todo !== '') {
-            setTodos([newTodo, ...todos])
-            setTodo('')
+    const addTodo = (title) => {
+        const newTodo = {
+            id: v4(),
+            text: title,
+            isDone: false,
+            editing: false
         }
+            setTodos([...todos, newTodo])
     }
-    const onChangeHandler = (e) => {
-        setTodo(e.currentTarget.value)
-    }
+
     const removeTask = (id) => {
         setTodos(todos.filter(todo => todo.id !== id))
     }
@@ -57,7 +51,7 @@ const App = () => {
             }
             return todo
         })
-        if (todo.text !== '') {
+        if (todos.text !== '') {
             setTodos(updatedTodos)
             setTodoEditing(null)
             setEditingText('')
@@ -81,9 +75,9 @@ const App = () => {
     return (
         <div className="App">
             <div>
-                <Input todo={todo}
+                <Input
                        addTodo={addTodo}
-                       onChangeHandler={onChangeHandler}
+                       error={error}
                 />
 
                 <TodoBody todos={getFilteredTasks(todos, filter)}

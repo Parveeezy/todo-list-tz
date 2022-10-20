@@ -50,3 +50,13 @@
     color: var(--hoverColor);
     border: var(--hoverBorder);
 }
+
+.inputError {
+    border: 2px solid red;
+}
+.error {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
